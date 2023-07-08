@@ -1,5 +1,5 @@
 import './style.scss';
-import Square from './Components/Square';
+//import Square from './Components/Square';
 import Board from './Components/Board';
 
 function App() {
