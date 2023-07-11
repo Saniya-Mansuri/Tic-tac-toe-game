@@ -12,7 +12,7 @@ function App() {
 
   const gamingBoard = history[currentMove];
 
-  const winner = calculateWinner(gamingBoard.squares);
+  const { winner, winningSquares } = calculateWinner(gamingBoard.squares);
 
   const handleSquareClick = clickedPosition => {
     if (gamingBoard.squares[clickedPosition] || winner) {
@@ -37,7 +37,7 @@ function App() {
         ? currentHistory.slice(0, currentHistory.indexOf(lastGamingState) + 1)
         : currentHistory;
 
-      return currentHistory.concat({
+      return base.concat({
         squares: nextSquaresState,
         isXNext: !lastGamingState.isXNext,
       });
@@ -55,13 +55,17 @@ function App() {
   };
   return (
     <div className="app">
+      <h1>
+        TIC <span className="text-green">TAC</span> TOE{' '}
+      </h1>
       <StatusMessage winner={winner} gamingBoard={gamingBoard} />
       <Board
         squares={gamingBoard.squares}
         handleSquareClick={handleSquareClick}
+        winningSquares={winningSquares}
       />
 
-      <h2>Game History</h2>
+      <h4>Game History</h4>
       <button
         type="button"
         onClick={restart}
@@ -71,6 +75,7 @@ function App() {
       </button>
 
       <History history={history} moveTo={moveTo} currentMove={currentMove} />
+      <div className="bg-balls"></div>
     </div>
   );
 }

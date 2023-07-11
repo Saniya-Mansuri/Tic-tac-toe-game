@@ -7,9 +7,9 @@ const StatusMessage = ({ winner, gamingBoard }) => {
   const renderStatusMessage = () => {
     if (winner) {
       return (
-        <div>
+        <h2>
           Winner is <span className="text-green">{winner}</span>
-        </div>
+        </h2>
       );
     }
     if (!winner && noMovesLeft) {
